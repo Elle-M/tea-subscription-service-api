@@ -1,16 +1,14 @@
 require "rails_helper"
 
-describe "Subscriptions API" do
-  it "can create a subscription" do
+describe "Customers Subscriptions API" do
+  it "can create a subscription for a customer" do
     customer = create(:customer)
-    subscription_params = { customer_id: customer.id, tea_id: 1, title: "Subscription 1", price: 10, status: "active", frequency: "monthly" }
-
-    post "/api/v1/subscriptions", params: subscription_params
-
-    subscription = Subscription.last
-
+    tea = create(:tea)
+    subscription_params = { title: "Subscription 1", price: 5.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id }
+    # binding.pry
+    post "/api/v1/customers/#{customer.id}/subscriptions", params: subscription_params
+    
     expect(response).to be_successful
-    expect(subscription.customer_id).to eq(customer.id)
-    expect(subscription.tea_id).to eq(1)
+    expect(customer.subscriptions.count).to eq(1)
   end
-end
+end  
