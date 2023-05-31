@@ -43,4 +43,16 @@ describe "Customers Subscriptions API" do
     expect(parsed[1][:customer_id]).to eq(@customer.id)
     expect(parsed[1][:tea_id]).to eq(@tea.id)
   end
+
+  it "can delete a subscription for a customer" do
+    subscription_1 = Subscription.create!(title: "Subscription 1", price: 5.00, status: "active", frequency: 1, customer_id: @customer.id, tea_id: @tea.id)
+    subscription_2 = Subscription.create!(title: "Subscription 2", price: 5.00, status: "active", frequency: 1, customer_id: @customer.id, tea_id: @tea.id)
+
+    expect(Subscription.count).to eq(2)
+
+    delete "/api/v1/customers/#{subscription_1.customer_id}/subscriptions/#{subscription_1.id}"
+
+    expect(response).to be_successful
+    expect(Subscription.count).to eq(1)
+  end
 end  

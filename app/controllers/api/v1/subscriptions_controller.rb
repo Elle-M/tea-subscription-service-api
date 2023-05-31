@@ -1,6 +1,8 @@
 class Api::V1::SubscriptionsController < ApplicationController
+  
   def index
-    @subscriptions = Subscription.all
+    @customer = Customer.find(params[:customer_id])
+    @subscriptions = @customer.subscriptions
     render json: @subscriptions
   end
 
@@ -11,6 +13,11 @@ class Api::V1::SubscriptionsController < ApplicationController
     else
       render json: @subscription.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @subscription = Subscription.find(params[:id])
+    @subscription.destroy
   end
 
   private
