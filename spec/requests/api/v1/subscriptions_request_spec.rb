@@ -55,4 +55,23 @@ describe "Customers Subscriptions API" do
     expect(response).to be_successful
     expect(Subscription.count).to eq(1)
   end
+
+  it "deletes a subscription and shows deleted subscriptions" do
+    subscription_1 = Subscription.create!(title: "Subscription 1", price: 5.00, status: "active", frequency: 1, customer_id: @customer.id, tea_id: @tea.id)
+    subscription_2 = Subscription.create!(title: "Subscription 2", price: 5.00, status: "active", frequency: 1, customer_id: @customer.id, tea_id: @tea.id)
+
+    expect(Subscription.count).to eq(2)
+
+    delete "/api/v1/customers/#{subscription_1.customer_id}/subscriptions/#{subscription_1.id}"
+
+    expect(response).to be_successful
+    expect(Subscription.count).to eq(1)
+
+    # Verify that the deleted subscription is included in the response
+    get "/api/v1/customers/#{subscription_1.customer_id}/subscriptions"
+    expect(response).to be_successful
+    expect(response.body).to include(subscription_1.title)
+    expect(response.body).to include(subscription_1.status)
+    expect(response.body).to include(subscription_1.deleted_at.to_s)
+  end
 end  
