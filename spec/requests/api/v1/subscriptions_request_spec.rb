@@ -115,7 +115,6 @@ describe "Customers Subscriptions API" do
     expect(response).to be_successful
     expect(Subscription.count).to eq(1)
 
-    # Verify that the deleted subscription is included in the response
     get "/api/v1/customers/#{subscription_1.customer_id}/subscriptions"
     expect(response).to be_successful
     expect(response.body).to include(subscription_1.title)

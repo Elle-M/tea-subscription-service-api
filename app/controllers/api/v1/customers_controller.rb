@@ -1,7 +1,8 @@
 class Api::V1::CustomersController < ApplicationController
-  def index
-    @customers = Customer.all
-    render json: @customers
+    
+  def show
+    @customer = Customer.includes(:subscriptions).find(params[:id])
+    render json: @customer
   end
 
   def create
@@ -13,6 +14,20 @@ class Api::V1::CustomersController < ApplicationController
     end
   end
 
+  def update
+    @customer = Customer.includes(:subscriptions).find(params[:id])
+    if @customer.update(customer_params)
+      render json: @customer
+    else
+      render json: @customer.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @customer = Customer.includes(:subscriptions).find(params[:id])
+    @customer.destroy
+  end
+  
   private
 
   def customer_params
