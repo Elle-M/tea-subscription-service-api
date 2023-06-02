@@ -121,7 +121,7 @@ The Tea Subscription Service API is built using the following technologies:
   Endpoint:
   
   ```JS
-  PUT /api/v1/customers/:id
+  PATCH /api/v1/customers/:id
   ```
   
   Params: 
@@ -273,12 +273,12 @@ Retrieves information about a specific customer.
   
  Description: 
     
- Retrieves information about a specific customer.
+ Creates a new customer subscription.
   
   Endpoint:
   
   ```JS
-  GET /api/v1/customers/:customer_id/subscriptions
+  POST /api/v1/customers/:customer_id/subscriptions
   ```
   
   Params: 
@@ -305,7 +305,6 @@ Retrieves information about a specific customer.
 
   ```JSON
 {
-    "id": 1,
     "customer_id": 1,
     "tea_id": 1,
     "title": "Two Week Subscription",
