@@ -104,9 +104,7 @@ The Tea Subscription Service API is built using the following technologies:
     "first_name": "Jane",
     "last_name": "Smith",
     "email": "jane.smith@example.com",
-    "address": "444 Sunny Street",
-    "created_at": "2023-06-01T17:51:04.749Z",
-    "updated_at": "2023-06-01T17:51:04.749Z"
+    "address": "444 Sunny Street"
 }
   ```
  </details>
@@ -196,9 +194,7 @@ The Tea Subscription Service API is built using the following technologies:
     "first_name": "John",
     "last_name": "Doe",
     "email": "johndoe@example.com",
-    "address": "123 Main St",
-    "created_at": "2023-06-01T01:17:16.912Z",
-    "updated_at": "2023-06-01T01:17:16.912Z"
+    "address": "123 Main St"
 }
   ```
  </details>
@@ -252,11 +248,8 @@ Retrieves information about a specific customer.
       "price": 19,
       "status": "active",
       "frequency": "monthly",
-      "created_at": "2023-06-01T02:03:22.477Z",
-      "updated_at": "2023-06-01T02:03:22.477Z",
       "tea_id": 1,
-      "customer_id": 1,
-      "deleted_at": null
+      "customer_id": 1
     },
   
     {
@@ -265,24 +258,8 @@ Retrieves information about a specific customer.
       "price": 14,
       "status": "active",
       "frequency": "two week",
-      "created_at": "2023-06-01T17:29:44.564Z",
-      "updated_at": "2023-06-01T17:29:44.564Z",
       "tea_id": 2,
-      "customer_id": 1,
-      "deleted_at": null
-    }
-  
-    {
-      "id": 2,
-      "title": "Two Week Subscription",
-      "price": 14,
-      "status": "active",
-      "frequency": "Two Week",
-      "created_at": "2023-06-01T17:23:48.202Z",
-      "updated_at": "2023-06-01T17:23:48.202Z",
-      "tea_id": 2,
-      "customer_id": 1,
-      "deleted_at": "2023-06-01T17:32:00.051Z"
+      "customer_id": 1
     }
 
 ]
@@ -311,8 +288,8 @@ Retrieves information about a specific customer.
   | `customer_id` | Required | integer | The ID of the customer.
   | `tea_id` | Required | integer | The ID of the tea for the subscription.
   | `title` | Required | string | The title of the subscription.
-  | `price | Required | string | The price of the subscription.
-  | `status | Required | string | The status of the subscription (active or cancelled).
+  | `price` | Required | string | The price of the subscription.
+  | `status` | Required | string | The status of the subscription (active or cancelled).
   | `frequency` | Required | string | The frequency of the subscription.
  
 
@@ -334,9 +311,7 @@ Retrieves information about a specific customer.
     "title": "Two Week Subscription",
     "price": 14.99,
     "status": "active",
-    "frequency": "Two Week",
-    "created_at": "2023-05-30T12:00:00Z",
-    "updated_at": "2023-05-30T12:30:00Z"
+    "frequency": "Two Week"
 }
 
   ```
